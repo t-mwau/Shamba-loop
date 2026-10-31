@@ -1,0 +1,9 @@
+{
+  "name": "ShambaLoop",
+  "short_name": "ShambaLoop",
+  "description": "Turn farm waste into income.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbfaf6",
+  "theme_color": "#2e694d"
+}
