@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^7.9.23",
+    "@sentry/nextjs": "^10.76.1",
+    "@upstash/ratelimit": "^2.2.0",
+    "@upstash/redis": "^1.40.0",
     "next": "15.5.28",
     "react": "^19.0.3",
     "react-dom": "^19.0.3"
@@ -22,5 +25,11 @@
     "eslint": "^9.22.0",
     "eslint-config-next": "15.5.28",
     "typescript": "^5.8.2"
+  },
+  "overrides": {
+    "postcss": "^8.5.23",
+    "@sentry/bundler-plugins": {
+      "glob": "^14.0.3"
+    }
   }
 }

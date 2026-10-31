@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { NewListingForm } from "@/components/NewListingForm";
+import { auth } from "@clerk/nextjs/server";
 
-export default function NewListingPage() {
+export default async function NewListingPage() {
+  await auth.protect();
+
   return (
     <div className="page-wrap new-listing-page">
       <Link className="back-link" href="/farmer">← Back to dashboard</Link>

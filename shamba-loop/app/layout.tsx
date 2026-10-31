@@ -1,5 +1,6 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { MarketplaceProvider } from "@/components/MarketplaceProvider";
 import { SiteHeader } from "@/components/SiteHeader";
 import "./globals.css";
@@ -21,6 +22,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <footer className="site-footer">
               <span className="brand footer-brand"><span className="brand-mark" aria-hidden="true">s</span><span>shamba<span className="brand-light">loop</span></span></span>
               <span>Waste less. Earn more. Grow together.</span>
+              <nav className="footer-links" aria-label="Legal and support">
+                <Link href="/privacy">Privacy</Link>
+                <Link href="/terms">Terms</Link>
+                <Link href="/support">Support</Link>
+              </nav>
               <span>Made for Kenya <span aria-hidden="true">♥</span></span>
             </footer>
           </MarketplaceProvider>

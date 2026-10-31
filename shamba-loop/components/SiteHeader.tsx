@@ -11,21 +11,19 @@ export function SiteHeader() {
       </Link>
       <nav className="main-nav" aria-label="Main navigation">
         <Link href="/processor">Find supply</Link>
-        <Link href="/farmer">Farmer dashboard</Link>
-      </nav>
-      <div className="header-actions">
         <Suspense fallback={null}>
           <Show when="signed-out">
             <Link className="header-sign-in" href="/sign-in">Sign in</Link>
           </Show>
           <Show when="signed-in">
+            <Link href="/farmer">Farmer dashboard</Link>
             <UserButton />
           </Show>
         </Suspense>
-        <Link className="header-cta" href="/farmer/new-listing">
-          List your waste <span aria-hidden="true">↗</span>
-        </Link>
-      </div>
+      </nav>
+      <Link className="header-cta" href="/farmer/new-listing">
+        List your waste <span aria-hidden="true">↗</span>
+      </Link>
     </header>
   );
 }
