@@ -15,7 +15,7 @@ export default async function NewListingPage() {
           <p>Share what you have. Nearby processors can make an offer, then you can agree on the pickup together.</p>
           <div className="listing-promise"><span>✓</span><p><strong>You’re in control</strong><br />Set your price. Accept only the offers that feel right.</p></div>
           <div className="listing-promise"><span>✓</span><p><strong>Weight confirmed at pickup</strong><br />You and the buyer agree on the final weight on site.</p></div>
-          <div className="listing-promise"><span>✓</span><p><strong>Payment made simple</strong><br />M-Pesa payments are part of the planned flow. This preview uses demo data only.</p></div>
+          <div className="listing-promise"><span>✓</span><p><strong>Agree payment directly</strong><br />ShambaLoop does not process payments yet. Confirm the payment method with your buyer before pickup.</p></div>
         </div>
         <NewListingForm />
       </div>

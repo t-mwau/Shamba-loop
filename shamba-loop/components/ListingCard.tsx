@@ -17,15 +17,21 @@ export function ListingCard({ listing }: { listing: Listing }) {
   const [price, setPrice] = useState(String(listing.pricePerKg));
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const { makeOffer } = useMarketplace();
+  const [error, setError] = useState("");
+  const { makeOffer, saving } = useMarketplace();
 
-  function submitOffer(event: FormEvent<HTMLFormElement>) {
+  async function submitOffer(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const amount = Number(price);
-    if (!Number.isFinite(amount) || amount <= 0) return;
-    makeOffer(listing, amount, message.trim());
-    setSubmitted(true);
-    setShowOffer(false);
+    if (!Number.isFinite(amount) || amount < 1) {
+      setError("Offer price must be at least KSh 1 per kg.");
+      return;
+    }
+    setError("");
+    if (await makeOffer(listing, amount, message.trim())) {
+      setSubmitted(true);
+      setShowOffer(false);
+    }
   }
 
   return (
@@ -55,15 +61,16 @@ export function ListingCard({ listing }: { listing: Listing }) {
         <form className="offer-inline-form" onSubmit={submitOffer}>
           <label>
             Your offer (KSh/kg)
-            <input min="1" step="1" type="number" value={price} onChange={(event) => setPrice(event.target.value)} required />
+            <input min="1" max="1000000" step="1" type="number" value={price} onChange={(event) => setPrice(event.target.value)} required />
           </label>
           <label>
             Note (optional)
             <input maxLength={120} value={message} onChange={(event) => setMessage(event.target.value)} placeholder="Pickup details or a quick note" />
           </label>
+          {error && <p className="form-error" role="alert">{error}</p>}
           <div className="form-actions">
             <Button size="small" type="button" variant="outline" onClick={() => setShowOffer(false)}>Cancel</Button>
-            <Button size="small" type="submit">Send offer</Button>
+            <Button disabled={saving} size="small" type="submit">{saving ? "Sending…" : "Send offer"}</Button>
           </div>
         </form>
       ) : (

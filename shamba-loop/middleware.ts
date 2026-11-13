@@ -103,6 +103,7 @@ export default clerkMiddleware(async (auth, request) => {
     }
   }
 
+  return NextResponse.next();
 });
 
 export const config = {

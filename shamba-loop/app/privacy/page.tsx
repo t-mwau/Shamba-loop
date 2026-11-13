@@ -25,7 +25,7 @@ export default function PrivacyPage() {
         <h2>What this demo handles</h2>
         <ul>
           <li>Clerk processes account and authentication information needed to register and sign in, such as your email address and session/security data.</li>
-          <li>Listings and offers in this preview are sample or in-memory data. They are not reliably saved, tied to a Clerk identity, or a record of a real transaction.</li>
+          <li>Marketplace listings and offers are stored by the Django backend and associated with the Clerk account that created them. Do not post sensitive personal or financial information in listing notes.</li>
           <li>When Upstash rate limiting is configured, a keyed HMAC of your account identifier or the Vercel-forwarded IP address is used for temporary abuse-prevention counters. Raw IP addresses are not used as Redis keys.</li>
           <li>When Sentry is configured, it receives application errors and limited performance diagnostics. Default personal-data collection and session replay are disabled.</li>
         </ul>

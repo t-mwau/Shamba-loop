@@ -31,7 +31,7 @@ export function ProcessorMarketplace() {
         {visibleListings.map((listing) => <ListingCard key={listing.id} listing={listing} />)}
       </div>
       {visibleListings.length === 0 && <div className="empty-state"><span>🌿</span><h2>No listings in this category yet</h2><p>Check another material or let a farmer know you’re looking.</p><Link className="text-link" href="/farmer/new-listing">Create a listing <span aria-hidden="true">→</span></Link></div>}
-      <div className="demo-note"><span>✳</span> Marketplace preview with sample Nakuru listings. Offers are demo-only and reset when you refresh.</div>
+      <div className="demo-note"><span>✳</span> Listings and offers are saved to your ShambaLoop account.</div>
     </div>
   );
 }

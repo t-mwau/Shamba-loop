@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useMarketplace } from "@/components/MarketplaceProvider";
 
 export function OffersInbox() {
-  const { offers, respondToOffer } = useMarketplace();
+  const { offers, respondToOffer, saving } = useMarketplace();
   return (
     <div className="page-wrap offers-page">
       <Link className="back-link" href="/farmer">← Back to dashboard</Link>
@@ -14,11 +14,11 @@ export function OffersInbox() {
           <div className="offer-card-heading"><div><p className="eyebrow">{offer.listingName} · {offer.quantityKg.toLocaleString()} kg</p><h2>{offer.processorName}</h2></div><span className={`status-pill ${offer.status === "Pending" ? "status-amber" : offer.status === "Accepted" ? "status-green" : "status-neutral"}`}>{offer.status}</span></div>
           <div className="offer-details"><div><span>Offer price</span><strong>KSh {offer.pricePerKg}<small>/kg</small></strong></div><div><span>Total offer</span><strong>KSh {offer.totalAmount.toLocaleString()}</strong></div><div><span>Suggested pickup</span><strong>{offer.pickupDate}</strong></div></div>
           <p className="offer-message">“{offer.message}”</p>
-          {offer.status === "Pending" ? <div className="offer-actions"><button className="button button-outline" onClick={() => respondToOffer(offer.id, false)}>Decline</button><button className="button button-primary" onClick={() => respondToOffer(offer.id, true)}>Accept offer <span aria-hidden="true">→</span></button></div> : <p className="offer-footnote">{offer.status === "Accepted" ? "Offer accepted. Coordinate the final pickup and confirm weight together." : "This offer is closed."}</p>}
+          {offer.status === "Pending" ? <div className="offer-actions"><button className="button button-outline" disabled={saving} onClick={() => void respondToOffer(offer.id, false)}>Decline</button><button className="button button-primary" disabled={saving} onClick={() => void respondToOffer(offer.id, true)}>Accept offer <span aria-hidden="true">→</span></button></div> : <p className="offer-footnote">{offer.status === "Accepted" ? "Offer accepted. Coordinate the final pickup and confirm weight together." : "This offer is closed."}</p>}
         </article>)}
         {offers.length === 0 && <div className="empty-state"><span>📬</span><h2>No offers yet</h2><p>When processors are interested, their offers will appear here.</p><Link className="text-link" href="/processor">Explore the marketplace <span aria-hidden="true">→</span></Link></div>}
       </div>
-      <p className="demo-note"><span>✳</span> Sample offers for demonstration only. No real pickup or payment is arranged.</p>
+      <p className="demo-note"><span>✳</span> Agree pickup details and confirm the final weight together before arranging payment.</p>
     </div>
   );
 }

@@ -8,10 +8,10 @@ import { Button } from "@/components/ui/Button";
 
 export function NewListingForm() {
   const router = useRouter();
-  const { createListing } = useMarketplace();
+  const { createListing, saving } = useMarketplace();
   const [error, setError] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const result = validateNewListing(formData);
@@ -19,8 +19,10 @@ export function NewListingForm() {
       setError(result.error);
       return;
     }
-    createListing(result.data);
-    router.push("/farmer");
+    setError("");
+    if (await createListing(result.data)) {
+      router.push("/farmer");
+    }
   }
 
   return (
@@ -36,10 +38,10 @@ export function NewListingForm() {
       </label>
       <div className="form-row">
         <label className="field-label">Available quantity
-          <span className="input-with-suffix"><input name="quantityKg" min="1" placeholder="e.g. 500" required type="number" /><span>kg</span></span>
+          <span className="input-with-suffix"><input name="quantityKg" min="1" max="1000000000" placeholder="e.g. 500" required type="number" /><span>kg</span></span>
         </label>
         <label className="field-label">Your asking price
-          <span className="input-with-suffix"><span>KSh</span><input name="pricePerKg" min="1" placeholder="e.g. 8" required type="number" /><span>/kg</span></span>
+          <span className="input-with-suffix"><span>KSh</span><input name="pricePerKg" min="1" max="1000000" placeholder="e.g. 8" required type="number" /><span>/kg</span></span>
         </label>
       </div>
       <div className="form-section-heading form-section-spaced"><span>02</span><div><h2>Where and when?</h2><p>Help nearby buyers plan a pickup.</p></div></div>
@@ -57,7 +59,7 @@ export function NewListingForm() {
       {error && <p className="form-error" role="alert">{error}</p>}
       <div className="form-submit-row">
         <p>Free to list. You agree the final weight is confirmed at pickup.</p>
-        <Button type="submit">Publish listing <span aria-hidden="true">→</span></Button>
+        <Button disabled={saving} type="submit">{saving ? "Publishing…" : "Publish listing"} <span aria-hidden="true">→</span></Button>
       </div>
     </form>
   );

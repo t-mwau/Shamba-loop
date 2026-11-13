@@ -3,7 +3,7 @@ import Link from "next/link";
 const steps = [
   { number: "01", title: "List what you have", text: "Post your crop or animal waste in a few taps. It’s free, and takes less than a minute." },
   { number: "02", title: "Meet the right buyers", text: "Nearby processors find your listing and make clear offers, with pickup details included." },
-  { number: "03", title: "Get paid at pickup", text: "Confirm the weight together, then receive payment directly through M-Pesa." },
+  { number: "03", title: "Agree on pickup", text: "Confirm the final weight, pickup, and payment details directly with your buyer. ShambaLoop does not process payments yet." },
 ];
 
 export default function HomePage() {
@@ -26,7 +26,7 @@ export default function HomePage() {
           <div className="art-hill art-hill-front" />
           <div className="art-stalks"><i /><i /><i /><i /><i /></div>
           <div className="art-card art-card-top"><span className="art-card-icon">🌽</span><span><strong>Maize stalks</strong><small>850 kg · Nakuru</small></span><b>+ KSh 6,800</b></div>
-          <div className="art-card art-card-bottom"><span className="match-icon">↗</span><span><strong>A better match, nearby</strong><small>Pickup arranged · Payment protected</small></span></div>
+          <div className="art-card art-card-bottom"><span className="match-icon">↗</span><span><strong>A better match, nearby</strong><small>Offer received · Pickup to agree</small></span></div>
           <div className="art-caption">THE SHAMBALOOP CYCLE <span>✳</span></div>
         </div>
       </section>
@@ -34,7 +34,7 @@ export default function HomePage() {
       <section className="proof-strip" aria-label="ShambaLoop benefits">
         <div><span className="proof-icon">↗</span><p><strong>Earn from the extra</strong><small>Give farm waste a market value</small></p></div>
         <div><span className="proof-icon">⌖</span><p><strong>Buyers close to home</strong><small>Local matches, less transport</small></p></div>
-        <div><span className="proof-icon">✓</span><p><strong>Payment you can trust</strong><small>Clear offers, M-Pesa ready</small></p></div>
+        <div><span className="proof-icon">✓</span><p><strong>Clear offers</strong><small>Agree on price and pickup together</small></p></div>
       </section>
 
       <section className="how-section">

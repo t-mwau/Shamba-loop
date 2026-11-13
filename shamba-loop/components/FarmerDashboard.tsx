@@ -5,7 +5,7 @@ import { useMarketplace } from "@/components/MarketplaceProvider";
 
 const wasteIcons: Record<string, string> = { "Maize stalks": "🌽", "Coffee husks": "☕", Manure: "🌱", "Rice husks": "🌾" };
 
-export function FarmerDashboard() {
+export function FarmerDashboard({ farmerName }: { farmerName: string }) {
   const { farmerListings, offers } = useMarketplace();
   const pendingCount = offers.filter((offer) => offer.status === "Pending").length;
   const totalKg = farmerListings.reduce((sum, listing) => sum + listing.quantityKg, 0);
@@ -13,7 +13,7 @@ export function FarmerDashboard() {
   return (
     <div className="page-wrap farmer-page">
       <div className="dashboard-welcome">
-        <div><p className="eyebrow">FARMER DASHBOARD</p><h1>Good morning, Mary <span aria-hidden="true">☀</span></h1><p>Here’s what’s happening with your farm waste.</p></div>
+        <div><p className="eyebrow">FARMER DASHBOARD</p><h1>Welcome back, {farmerName} <span aria-hidden="true">☀</span></h1><p>Here’s what’s happening with your farm waste.</p></div>
         <Link className="button button-primary" href="/farmer/new-listing">＋ New listing</Link>
       </div>
       <div className="stats-grid">
@@ -34,7 +34,7 @@ export function FarmerDashboard() {
         </div>
       </section>
       <div className="dashboard-tip"><span>✳</span><p><strong>Quick tip</strong> Dry, well-sorted materials often attract better offers. Add a clear quality note to help buyers decide.</p><Link href="/farmer/new-listing">Got it</Link></div>
-      <p className="demo-note"><span>✳</span> Demo dashboard. Changes are temporary and reset when you refresh.</p>
+      <p className="demo-note"><span>✳</span> Your listings and offers are saved to your ShambaLoop account.</p>
     </div>
   );
 }

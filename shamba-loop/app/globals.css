@@ -225,6 +225,9 @@ h1, h2, h3, p { margin-top: 0; }
 .form-submit-row p { max-width: 225px; margin: 0; color: #87928a; font-size: 9px; line-height: 1.6; }
 .form-submit-row .button { min-height: 42px; white-space: nowrap; font-size: 11px; }
 .form-error { color: #a53d33; font-size: 11px; }
+.marketplace-notice { display: flex; justify-content: center; align-items: center; gap: 12px; padding: 10px 20px; color: #526a50; background: #edf6ec; font-size: 13px; }
+.marketplace-notice-error { color: #8d342b; background: #fbefed; }
+.marketplace-notice button { border: 0; color: inherit; background: transparent; font: inherit; font-weight: 700; text-decoration: underline; cursor: pointer; }
 
 .offers-heading { align-items: center; margin-bottom: 28px; }
 .offers-heading h1 { font-size: 42px; }
